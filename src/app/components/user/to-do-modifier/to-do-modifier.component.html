@@ -1,0 +1,29 @@
+<div class="container">
+
+  <form [formGroup]="formModif" (ngSubmit)="Modifier()">
+      
+    <div class="form-group">
+      <label for="formGroupExampleInput">titre</label>
+      <input type="text" class="form-control" id="formGroupExampleInput"  name="titre" 
+        formControlName="titre" [value]="title">
+      <div class="alert alert-warning" *ngIf="titre.touched && titre.invalid">
+        <div *ngIf=titre.errors.required> le champ titre est obligatoire</div>
+        <div *ngIf=titre.errors.minlength> min 2!</div>
+
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="formGroupExampleInput2">Description</label>
+      <textarea class="form-control" [value]="des" name="description" formControlName="description"></textarea>
+      <div class="alert alert-warning" *ngIf="description.touched && description.invalid">
+        <div *ngIf=description.errors.minlength> min 2!</div>
+
+      </div>
+
+    </div>
+    <input type="submit" class="btn btn-primary" [disabled]="formModif.invalid" value="Modifier">
+
+  </form>
+</div>
+
+<app-footer></app-footer>
